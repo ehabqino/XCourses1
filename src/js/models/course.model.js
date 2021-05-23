@@ -6,7 +6,16 @@ define(['ojs/ojModel'],
             }//
 
             initializeModelCollection(endpoint){
-
+                this.courseModelDef = oj.Model.extend({
+                    url : endpoint,
+                    idAttribute :"@rid"
+                });
+                this.courseCollDef = oj.Model.extend({
+                    url : endpoint,
+                    comparator :"@rid",
+                    model : new this.courseModelDef
+                });
+                this.courses = new this.courseCollDef;
             }//
             getCoursesMenu(notify){
                 let navData = [
