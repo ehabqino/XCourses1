@@ -41,7 +41,7 @@ define(['ojs/ojModel'],
                             // In Result Array(Rows)
                             if(val[1].length != undefined){
                                 val[1].forEach(row => {
-                                    navData.push( { path: 'dashboard', detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' } })
+                                    navData.push( { path: 'lessons', detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' } })
                                 });
 
                             }
