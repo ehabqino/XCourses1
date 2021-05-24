@@ -19,6 +19,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       // Handle announcements sent when pages change, for Accessibility.
       this.manner = ko.observable('polite');
       this.message = ko.observable();
+      this.showMenu = ko.observable(false);
       announcementHandler = (event) => {
           this.message(event.detail.message);
           this.manner(event.detail.manner);
@@ -35,8 +36,8 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       
       ////this by Ehab Qino
       course.getCoursesMenu((success,navData)=>{
-        //console.log(navData)
-        if(success){
+        //console.log(success)
+        if(success==true){
         // Router setup
           this.router = new CoreRouter(navData, {
             urlAdapter: new UrlParamAdapter()
@@ -50,6 +51,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
           // Setup the navDataProvider with the routes, excluding the first redirected
           // route.
           this.navDataProvider = new ArrayDataProvider(navData.slice(1), {keyAttributes: "path"});
+          this.showMenu(true);
         }
       })//
 
