@@ -31,8 +31,25 @@ define(['ojs/ojModel'],
                         //'Authorization' : 'Basic'+btoa('root':'rootpwd')
                     },//headers
                     success:(coll,data)=>{
-                        console.log("Success");
-                        console.log(data.result);
+                        let navData = [
+                            { path: '', redirect: 'dashboard' },
+                            { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
+                        ];
+
+                        //Reformating the Result
+                        Object.entries(data).map((val)=>{
+                            // In Result Array(Rows)
+                            if(val[1].length != undefined){
+                                val[1].forEach(row => {
+                                    navData.push( { path: 'dashboard', detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' } })
+                                });
+
+                            }
+
+                        });//
+                        notify(true,navData)
+                        //console.log("Success");
+                        //console.log(navData);
                     },//
                     error:(model,xhr,options)=>{
                         console.log("Error");
