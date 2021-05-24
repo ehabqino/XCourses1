@@ -34,6 +34,7 @@ define(['ojs/ojModel'],
                         let navData = [
                             { path: '', redirect: 'dashboard' },
                             { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
+                            { path: 'lessons', detail: { label: 'Courses Lessons', iconClass: 'oj-ux-ico-bar-chart' } }
                         ];
 
                         //Reformating the Result
@@ -41,7 +42,9 @@ define(['ojs/ojModel'],
                             // In Result Array(Rows)
                             if(val[1].length != undefined){
                                 val[1].forEach(row => {
-                                    navData.push( { path: 'lessons', detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' } })
+                                    navData.push( { path: 'lessons'+'/'+row.courseid,
+                                    detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' },
+                                params:{id:row.courseid,title:row.title,description:row.description} })
                                 });
 
                             }
