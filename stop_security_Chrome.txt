@@ -1,0 +1,1 @@
+chrome.exe --user-data-dir="c:/Chrome dev session" --disable-web-security

@@ -22,21 +22,23 @@ define(['ojs/ojModel'],
                 this.initializeModelCollection(api_url);
                 let courseRow = new this.courseModelDef({},this.courses);
                 courseRow.fetch({
-                    success:(coll,data)=>{
-                        console.log("Success");
-                        console.log(data);
-                    },//
-                    error:(model,xhr,options)=>{
-                        console.log("Error");
-                        console.log(options);
-                    },//
-                    Headers:{
+                    
+                    headers:{
                         'Authorization' : 'Basic cm9vdDpyb290cHdk',
                         'Content-Type' : 'application/json'
                         
                         //if i want to manualy encrypted the authorization using basic 64 encryption
                         //'Authorization' : 'Basic'+btoa('root':'rootpwd')
-                    }//Headers
+                    },//headers
+                    success:(coll,data)=>{
+                        console.log("Success");
+                        console.log(data.result);
+                    },//
+                    error:(model,xhr,options)=>{
+                        console.log("Error");
+                        console.log(options);
+                    },//
+                    
                 });//end fetch
 
 
