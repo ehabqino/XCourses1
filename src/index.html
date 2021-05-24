@@ -43,7 +43,7 @@
                             item.renderer="[[KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
                             on-click="[[toggleDrawer]]"
                             selection="{{selection.path}}"
-                            on-selection-changed="[[selectionChanged]]">
+                            on-selection-changed="[[navSelectionChanged]]">
         </oj-navigation-list>
        </oj-bind-if>
       </div>
@@ -90,7 +90,7 @@
                                 edge="top"
                                 item.renderer="[[KnockoutTemplateUtils.getRenderer('navTemplate', true)]]"
                                 selection="{{selection.path}}"
-                                on-selection-changed="[[selectionChanged]]"
+                                on-selection-changed="[[navSelectionChanged]]"
                                 >
             </oj-navigation-list>
           </oj-bind-if>
