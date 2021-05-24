@@ -42,7 +42,7 @@ define(['ojs/ojModel'],
                             // In Result Array(Rows)
                             if(val[1].length != undefined){
                                 val[1].forEach(row => {
-                                    navData.push( { path: 'lessons'+'/'+row.courseid,
+                                    navData.push( { path: 'lessons/'+row.courseid,
                                     detail: { label: row.title, iconClass: 'oj-ux-ico-bar-chart' },
                                 params:{id:row.courseid,title:row.title,description:row.description} })
                                 });

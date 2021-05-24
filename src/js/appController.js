@@ -53,7 +53,11 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
           this.navDataProvider = new ArrayDataProvider(navData.slice(1), {keyAttributes: "path"});
           this.showMenu(true);
         }
-      })//
+      });//
+
+      this.selectionChanged =(event)=>{
+        console.log(event.detail.value);
+      }
 
 
      /*
