@@ -32,8 +32,7 @@ define(['ojs/ojModel'],
                     },//headers
                     success:(coll,data)=>{
                         let navData = [
-                            { path: '', redirect: 'dashboard' },
-                            { path: 'dashboard', detail: { label: 'Dashboard', iconClass: 'oj-ux-ico-bar-chart' } },
+                            { path: '', redirect: 'lessons' },
                             { path: 'lessons', detail: { label: 'Courses Lessons', iconClass: 'oj-ux-ico-bar-chart' } }
                         ];
 

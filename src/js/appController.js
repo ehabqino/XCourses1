@@ -57,7 +57,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
 
       this.selectionChanged =(event)=>{
         console.log(event.detail.value);
-      }
+      };
 
 
      /*
