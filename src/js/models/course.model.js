@@ -52,8 +52,9 @@ define(['ojs/ojModel'],
                         //console.log(navData);
                     },//
                     error:(model,xhr,options)=>{
-                        console.log("Error");
-                        console.log(options);
+                        notify(false,'Error:'+xhr.textStatus);
+                        //console.log("Error");
+                        //console.log(options);
                     },//
                     
                 });//end fetch

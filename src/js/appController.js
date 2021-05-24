@@ -33,7 +33,7 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       const mdQuery = ResponsiveUtils.getFrameworkQuery(ResponsiveUtils.FRAMEWORK_QUERY_KEY.MD_UP);
       this.mdScreen = ResponsiveKnockoutUtils.createMediaQueryObservable(mdQuery);
       
-      course.getCoursesMenu((navData)=>{
+      course.getCoursesMenu((success,navData)=>{
         console.log(navData)
       })//
       let navData = [
