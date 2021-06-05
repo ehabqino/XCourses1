@@ -8,9 +8,9 @@
 /*
  * Your application specific code will go here
  */
-define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknockouttemplateutils', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojresponsiveutils', 'ojs/ojresponsiveknockoututils', 'ojs/ojarraydataprovider',
+define(['utils/messageBroker','models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element-utils', 'ojs/ojknockouttemplateutils', 'ojs/ojcorerouter', 'ojs/ojmodulerouter-adapter', 'ojs/ojknockoutrouteradapter', 'ojs/ojurlparamadapter', 'ojs/ojresponsiveutils', 'ojs/ojresponsiveknockoututils', 'ojs/ojarraydataprovider',
         'ojs/ojoffcanvas', 'ojs/ojmodule-element', 'ojs/ojknockout'],
-  function(course,ko, Context, moduleUtils, KnockoutTemplateUtils, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ResponsiveUtils, ResponsiveKnockoutUtils, ArrayDataProvider, OffcanvasUtils) {
+  function(MsgBroker,course,ko, Context, moduleUtils, KnockoutTemplateUtils, CoreRouter, ModuleRouterAdapter, KnockoutRouterAdapter, UrlParamAdapter, ResponsiveUtils, ResponsiveKnockoutUtils, ArrayDataProvider, OffcanvasUtils) {
 
      function ControllerViewModel() {
 
@@ -56,7 +56,12 @@ define(['models/course.model','knockout', 'ojs/ojcontext', 'ojs/ojmodule-element
       });//
 
       this.navSelectionChanged =(event)=>{
-        console.log(event.detail.value);
+       // console.log(event.detail.value);
+       let page = event.detail.value;
+
+       if(page.indexOf("lessons")!=-1){
+         MsgBroker.publish('Nav-URL-Changed',page.substr(page.indexOf("/")+1));
+       }
       };
 
 

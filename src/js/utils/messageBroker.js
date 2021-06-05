@@ -2,28 +2,28 @@ define([],
     function() {
         class MsgBroker {
             constructor(){
-                this.subcribers = {}
+                this.subscribers = {}
             }
             publish(groupName, data){
-                if(! Array.isArray(this.subcribers[groupName]))
+                if(! Array.isArray(this.subscribers[groupName]))
                     return;
-                this.subcribers[groupName].forEach(callbackNotify => {
+                this.subscribers[groupName].forEach(callbackNotify => {
                     callbackNotify(data);
                 });
 
             }//end publish
 
-            subcribe(groupName, callbackNotify){
-                if(! Array.isArray(this.subcribers[groupName]))
-                    this.subcribers[groupName]=[];
+            subscribe(groupName, callbackNotify){
+                if(! Array.isArray(this.subscribers[groupName]))
+                    this.subscribers[groupName]=[];
                 let exists = false;
-                  this.subcribers[groupName].forEach(savedCallback => {
+                  this.subscribers[groupName].forEach(savedCallback => {
                       if(savedCallback.toString() == callbackNotify.toString()) //using toString to compare two functions
                             exists =true;
                   });
     
                  if(!exists)
-                    this.subcribers[groupName].push(callbackNotify);
+                    this.subscribers[groupName].push(callbackNotify);
 
             }//end subcribe
 

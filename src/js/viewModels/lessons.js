@@ -8,9 +8,12 @@
 /*
  * Your customer ViewModel code goes here
  */
-define(['utils/accUtils'],
- function(accUtils) {
+define(['utils/accUtils','utils/messageBroker'],
+ function(accUtils,MsgBroker) {
     function LessonsViewModel() {
+      MsgBroker.subscribe('Nav-URL-Changed', data=>{
+         console.log("Lesson Page filter by :" + data);
+      });
       // Below are a set of the ViewModel methods invoked by the oj-module component.
       // Please reference the oj-module jsDoc for additional information.
 
