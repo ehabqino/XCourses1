@@ -8,7 +8,7 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['accUtils'],
+define(['utils/accUtils'],
  function(accUtils) {
     function DashboardViewModel() {
       // Below are a set of the ViewModel methods invoked by the oj-module component.
