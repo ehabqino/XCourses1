@@ -8,9 +8,14 @@
 /*
  * Your customer ViewModel code goes here
  */
-define(['utils/accUtils','utils/messageBroker'],
- function(accUtils,MsgBroker) {
+define(['ojs/ojcore','knockout','jquery','utils/accUtils','utils/messageBroker',
+        'ojs/ojarraydataprovider','model/lesson.model','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
+ function(oj,ko,$,accUtils,MsgBroker,ArrayDataProvider,lessonModel) {
     function LessonsViewModel() {
+      lessonModel.getLessonsList((success,data)=>{
+           if(success)
+              console.log(data)
+      });
       MsgBroker.subscribe('Nav-URL-Changed', data=>{
          console.log("Lesson Page filter by :" + data);
       });
