@@ -1,25 +1,18 @@
-/**
- * @license
- * Copyright (c) 2014, 2021, Oracle and/or its affiliates.
- * Licensed under The Universal Permissive License (UPL), Version 1.0
- * as shown at https://oss.oracle.com/licenses/upl/
- * @ignore
- */
-/*
- * Your customer ViewModel code goes here
- */
+
 define(['ojs/ojcore','knockout','jquery','utils/accUtils','utils/messageBroker',
         'ojs/ojarraydataprovider','models/lesson.model','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
  function(oj,ko,$,accUtils,MsgBroker,ArrayDataProvider,lessonModel) {
     function LessonsViewModel() {
       self = this;
       self.allData = ko.observableArray([]);
-      self.selectedLessons = ko.observableArray(self.allData);
-      self.lessonsDataProvider = new ArrayDataProvider(self.selectedLessons,{keyAttributes:'@rid'});
+      self.selectedLessons = ko.observableArray([]);
+      self.lessonsDataProvider = new ArrayDataProvider(self.selectedLessons,
+        {keyAttributes:'@rid'});
 
       lessonModel.getLessonsList((success,data)=>{
            if(success)
            {
+             // console.log(data); 
               self.allData(data);
               self.selectedLessons(self.allData());
               self.selectedLessons.valueHasMutated();

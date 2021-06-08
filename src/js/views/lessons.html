@@ -2,13 +2,13 @@
 <div class="oj-hybrid-padding">
   <h1>Lessons </h1>
   <div class="demo-card-container" style="width: 100%;">
-    <oj-list-view id="lessonsListView" display="card" data="[lessonsDataProvider]">
-      <template slot="itemTemp1" data-oj-as="row">
+    <oj-list-view id="lessonsListView" display="card" data="[[lessonsDataProvider]]">
+      <template slot="itemTemplate" data-oj-as="row">
         <li class="demo-card">
           <oj-action-card>
             <dl>
-              <dt>
-               <span><img src="[[row.data.image]]"></span>
+              <dt style="padding: 5px; width: 98%;">
+               <span><img :src="[[row.data.image]]" width="95%"/> </span>
                <span class="oj-text-color-primary lesson-title">
                <oj-bind-text value="[[row.data.title]]"></oj-bind-text>
               </span>
