@@ -51,7 +51,7 @@ define(['ojs/ojModel'],
 
                         });//
                         */
-                        notify(true,data)
+                        notify(true,data.result)
                         //console.log("Success");
                         //console.log(navData);
                     },//

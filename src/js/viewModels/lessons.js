@@ -9,12 +9,21 @@
  * Your customer ViewModel code goes here
  */
 define(['ojs/ojcore','knockout','jquery','utils/accUtils','utils/messageBroker',
-        'ojs/ojarraydataprovider','model/lesson.model','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
+        'ojs/ojarraydataprovider','models/lesson.model','ojs/ojlistview','ojs/ojlistitemlayout','ojs/ojactioncard'],
  function(oj,ko,$,accUtils,MsgBroker,ArrayDataProvider,lessonModel) {
     function LessonsViewModel() {
+      self = this;
+      self.allData = ko.observableArray([]);
+      self.selectedLessons = ko.observableArray(self.allData);
+      self.lessonsDataProvider = new ArrayDataProvider(self.selectedLessons,{keyAttributes:'@rid'});
+
       lessonModel.getLessonsList((success,data)=>{
            if(success)
-              console.log(data)
+           {
+              self.allData(data);
+              self.selectedLessons(self.allData());
+              self.selectedLessons.valueHasMutated();
+            }
       });
       MsgBroker.subscribe('Nav-URL-Changed', data=>{
          console.log("Lesson Page filter by :" + data);
